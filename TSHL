@@ -1,5 +1,5 @@
 TSHLKeyword = {"Power", "Subscript", "Plus", "Times", "Derivative", "Rule", "OverBar",
-   "List", "Complex", "Sin", "Cos", "Integrate", "Rational", "Sech", "Tanh", "Cosh", "Sinh", "SeriesData", "NonCommutativeMultiply", "ArcTan"};
+   "List", "Complex", "Sin", "Cos", "Integrate", "Rational", "Sech", "Tanh", "Cosh", "Sinh", "SeriesData", "NonCommutativeMultiply", "ArcTan","EllipticK", "EllipticE"};
 TSHL = {Derivative[j1_][i_][k1_] /; j1 > 0 :> 
     Subscript[i, 
      ToExpression@StringJoin@Table[ToString[k1], {i, 1, j1}]], 
