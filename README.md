@@ -1,6 +1,8 @@
 # TSHL使用教程
 Mathematica中，多元函数的导数看起来太多冗杂，不够简介，因此笔者写了一套替换代码，用于实验函数的简化表达，例如
+
 ![rvokj0p5 mjv](https://github.com/user-attachments/assets/16ec15e6-53e1-497c-9dd7-03d580b99718)
+
 ## 实现的功能
 1.自动识别自变量，将[]中的自变量自动转化为角标
 2.最多支持四个自变量
