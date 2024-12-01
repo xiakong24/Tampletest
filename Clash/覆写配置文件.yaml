@@ -266,14 +266,14 @@ proxy-groups:
     filter: (?i)NF|Lv1|Lv2|Netflix|NETFLIX|Media
 rule-providers:
   ProxyList:
-    url: https://github.com/xiakong24/Tampletest/raw/refs/heads/master/ArticleWeb.list
-    path: ./ruleset/ArticleWeb.list
+    url: https://github.com/xiakong24/Tampletest/raw/refs/heads/master/Clash/proxylist.list
+    path: ./ruleset/proxylist.list
     behavior: classical
     interval: 86400
     format: text
     type: http
   ArticleWeb:
-    url: https://github.com/xiakong24/Tampletest/raw/refs/heads/master/ArticleWeb.list
+    url: https://github.com/xiakong24/Tampletest/raw/refs/heads/master/Clash/ArticleWeb.list
     path: ./ruleset/ArticleWeb.list
     behavior: classical
     interval: 86400
@@ -491,6 +491,7 @@ rule-providers:
     type: http
 
 rules:
+  - "RULE-SET,ProxyList,🚀 节点选择"
   - "RULE-SET,ArticleWeb,📄 SCI期刊"
   - "RULE-SET,LocalAreaNetwork,🎯 全球直连"
   - "RULE-SET,UnBan,🎯 全球直连"
