@@ -1,0 +1,217 @@
+TSHLKeyword = {"Power", "Subscript", "Plus", "Times", "Derivative", "Rule", "OverBar",
+   "List", "Complex", "Sin", "Cos", "Integrate", "Rational", "Sech", "Tanh", "Cosh", "Sinh", "SeriesData", "NonCommutativeMultiply", "ArcTan","EllipticK", "EllipticE", "OverTilde", "Tan"};
+TSHL = {Derivative[j1_][i_][k1_] /; j1 > 0 :> 
+    Subscript[i, 
+     ToExpression@StringJoin@Table[ToString[k1], {i, 1, j1}]], 
+   Derivative[j1_, j2_][i_][k1_, k2_] /; j1 == 0 && j2 > 0 :> 
+    Subscript[i, 
+     ToExpression@StringJoin@Table[ToString[k2], {i, 1, j2}]], 
+   Derivative[j1_, j2_][i_][k1_, k2_] /; j1 > 0 && j2 == 0 :> 
+    Subscript[i, 
+     ToExpression@StringJoin@Table[ToString[k1], {i, 1, j1}]], 
+   Derivative[j1_, j2_][i_][k1_, k2_] /; j1 > 0 && j2 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@{Table[ToString[k1], {i, 1, j1}], 
+        Table[ToString[k2], {i, 1, j2}]}], 
+   Derivative[j1_, j2_, j3_][i_][k1_, k2_, k3_] /; 
+     j1 > 0 && j2 == 0 && j3 == 0 :> 
+    Subscript[i, 
+     ToExpression@StringJoin@Table[ToString[k1], {i, 1, j1}]], 
+   Derivative[j1_, j2_, j3_][i_][k1_, k2_, k3_] /; 
+     j1 == 0 && j2 > 0 && j3 == 0 :> 
+    Subscript[i, 
+     ToExpression@StringJoin@Table[ToString[k2], {i, 1, j2}]], 
+   Derivative[j1_, j2_, j3_][i_][k1_, k2_, k3_] /; 
+     j1 == 0 && j2 == 0 && j3 > 0 :> 
+    Subscript[i, 
+     ToExpression@StringJoin@Table[ToString[k3], {i, 1, j3}]], 
+   Derivative[j1_, j2_, j3_][i_][k1_, k2_, k3_] /; 
+     j1 > 0 && j2 > 0 && j3 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@{Table[ToString[k1], {i, 1, j1}], 
+        Table[ToString[k2], {i, 1, j2}]}], 
+   Derivative[j1_, j2_, j3_][i_][k1_, k2_, k3_] /; 
+     j1 > 0 && j2 == 0 && j3 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@{Table[ToString[k1], {i, 1, j1}], 
+        Table[ToString[k3], {i, 1, j3}]}], 
+   Derivative[j1_, j2_, j3_][i_][k1_, k2_, k3_] /; 
+     j1 == 0 && j2 > 0 && j3 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@{Table[ToString[k2], {i, 1, j2}], 
+        Table[ToString[k3], {i, 1, j3}]}], 
+   Derivative[j1_, j2_, j3_][i_][k1_, k2_, k3_] /; 
+     j1 > 0 && j2 > 0 && j3 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@{Table[ToString[k1], {i, 1, j1}], 
+        Table[ToString[k2], {i, 1, j2}], 
+        Table[ToString[k3], {i, 1, j3}]}], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 == 0 && j3 == 0 && j4 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 == 0 && j2 > 0 && j3 == 0 && j4 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {2}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 > 0 && j3 > 0 && j4 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1, 2, 3}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 == 0 && j2 == 0 && j3 > 0 && j4 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {3}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 == 0 && j2 == 0 && j3 == 0 && j4 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {4}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 > 0 && j3 > 0 && j4 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1, 2, 3}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 > 0 && j3 == 0 && j4 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1, 2}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 == 0 && j3 > 0 && j4 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1, 3}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 == 0 && j3 == 0 && j4 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1, 4}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 == 0 && j2 > 0 && j3 > 0 && j4 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {2, 3}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 == 0 && j2 > 0 && j3 == 0 && j4 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {2, 4}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 == 0 && j2 == 0 && j3 > 0 && j4 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {3, 4}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 > 0 && j3 > 0 && j4 == 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1, 2, 3}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 > 0 && j3 == 0 && j4 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1, 2, 4}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 == 0 && j3 > 0 && j4 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1, 3, 4}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 == 0 && j2 > 0 && j3 > 0 && j4 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {2, 3, 4}}])], 
+   Derivative[j1_, j2_, j3_, j4_][i_][k1_, k2_, k3_, k4_] /; 
+     j1 > 0 && j2 > 0 && j3 > 0 && j4 > 0 :> 
+    Subscript[i, 
+     ToExpression@
+      StringJoin@
+       Flatten@(Table[
+          Table[ToString@{k1, k2, k3, k4}[[#1]], {i, 
+              1, {j1, j2, j3, j4}[[#1]]}] &[j], {j, {1, 2, 3, 4}}])], 
+   i_[k1_, ___] /; ! StringMatchQ[ToString[i], TSHLKeyword] :> i};
+
+
+Dxt := Sum[(-1)^(#1 - pai)*Binomial[#1, pai]*
+       Sum[(-1)^(#2 - paj)*Binomial[#2, paj]*D[#3, {x, pai}, {t, paj}]*
+         D[#4, {x, #1 - pai}, {t, #2 - paj}], {paj, 0, #2}], {pai, 0, #1}] &
+ 
+Dxyt:=
+Sum[(-1)^(#1 - pai)*Binomial[#1, pai]*
+Sum[(-1)^(#2 - paj)*Binomial[#2, paj]*
+Sum[(-1)^(#3 - pak)*Binomial[#3, pak]*
+D[#4, {x, pai},{y, paj},{t, pak}]*
+D[#5, {x, #1 - pai}, {y, #2 - paj},{t,#3 - pak}], 
+{pak, 0, #3}], 
+{paj, 0, #2}],
+{pai, 0, #1}]  &
+
+Dxyzt:=
+Sum[(-1)^(#1 - pai)*Binomial[#1, pai]*
+Sum[(-1)^(#2 - paj)*Binomial[#2, paj]*
+Sum[(-1)^(#3 - pak)*Binomial[#3, pak]*
+Sum[(-1)^(#4 - pal)*Binomial[#4, pal]*
+D[#5, {x, pai},{y, paj},{z, pak},{t, pal}]*
+D[#6, {x, #1 - pai}, {y, #2 - paj},{z,#3 - pak},{t,#4 - pal}], 
+{pal, 0, #4}],
+{pak, 0, #3}], 
+{paj, 0, #2}],
+{pai, 0, #1}]  &
